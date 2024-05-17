@@ -2,33 +2,31 @@
 
 executor: cluster-generic
 cluster-generic-submit-cmd:
-  mkdir -p results/slurm_logs/{rule} &&
+  mkdir -p results/lib2/slurm_logs/{rule} &&
   sbatch
     --cpus-per-task={threads}
     --mem={resources.mem_mb}
     --time={resources.time}
     --job-name=smk-{rule}-{wildcards}
-    --output=results/slurm_logs/{rule}/{rule}-%j-{wildcards}.out
-    --error=results/slurm_logs/{rule}/{rule}-%j-{wildcards}.err
+    --output=results/lib2/slurm_logs/{rule}/{rule}-%j-{wildcards}.out
+    --error=results/lib2/slurm_logs/{rule}/{rule}-%j-{wildcards}.err
     --parsable
-    --mail-type=FAIL
-    --mail-user=Chris.Funk@colostate.edu
 cluster-generic-status-cmd: status-scontrol.sh
 cluster-generic-cancel-cmd: scancel
-cluster-generic-cancel-nargs: 400
+cluster-generic-cancel-nargs: 4000
 default-resources:
   - time="08:00:00"
   - mem_mb=7800
-  - tmpdir="results/snake-tmp"
+  - tmpdir="results/lib2/snake-tmp"
 restart-times: 0
 max-jobs-per-second: 10
 max-status-checks-per-second: 25
 local-cores: 1
 latency-wait: 60
 cores: 32
-jobs: 32
 keep-going: True
 rerun-incomplete: True
 printshellcmds: True
-software-deployment-method: conda
+use-conda: True
 rerun-trigger: mtime
+scheduler: greedy
