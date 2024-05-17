@@ -2,26 +2,24 @@
 
 rule ustacks:
     input:
-        R1="results/process_radtags/{sample}.1.fq.gz",
+        R1="results/lib2/process_radtags/{sample}.1.fq.gz",
     output:
-        tags="results/stacks_denovo/ustacks/{sample}.tags.tsv.gz",	
-        snps="results/stacks_denovo/ustacks/{sample}.snps.tsv.gz",
-        alleles="results/stacks_denovo/ustacks/{sample}.alleles.tsv.gz",
-        out="results/stacks_denovo/ustacks/ustacks_{sample}.out",
-        err="results/stacks_denovo/ustacks/ustacks_{sample}.err"
+        tags="results/lib2/stacks_denovo/ustacks/{sample}.tags.tsv.gz",	
+        snps="results/lib2/stacks_denovo/ustacks/{sample}.snps.tsv.gz",
+        alleles="results/lib2/stacks_denovo/ustacks/{sample}.alleles.tsv.gz"
     conda:
-        "../envs/stacks.yaml"
+        "../../envs/stacks.yaml"
     resources:
         cpus=10,
         mem_mb=78000,
         time="24:00:00"
     log:
-        "results/logs/stacks_denovo/ustacks/{sample}.log"
+        "results/lib2/logs/stacks_denovo/ustacks/{sample}.log"
     benchmark:
-        "results/benchmarks/stacks_denovo/ustacks/{sample}.bmk"
+        "results/lib2/benchmarks/stacks_denovo/ustacks/{sample}.bmk"
     shell:
         " (ustacks -f {input.R1}			"
-        " -o results/stacks_denovo/ustacks/		"
+        " -o results/lib2/stacks_denovo/ustacks/		"
         " -m 3 -M 2 -d -t gzfastq -p 10			"
         " --model_type bounded --bound_high 0.05)	"
         "  2> {log}					"

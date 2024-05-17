@@ -3,27 +3,25 @@
 
 rule tsv2bam:
     input:
-        "results/stacks_denovo/sstacks/{sample}.matches.tsv.gz"
+        "results/lib2/stacks_denovo/sstacks/{sample}.matches.tsv.gz"
     output:
-        "results/stacks_denovo/tsv2bam/{sample}.matches.bam",
-        "results/stacks_denovo/tsv2bam/{sample}.out",
-        "results/stacks_denovo/tsv2bam/{sample}.err"
+        "results/lib2/stacks_denovo/tsv2bam/{sample}.matches.bam"
     params:
         popmap=config["popmap"],
     conda:
-        "../envs/stacks.yaml"
+        "../../envs/stacks.yaml"
     resources:
         cpus=10,
         mem_mb=78000,
         time="24:00:00"
     log:
-        "results/logs/stacks_denovo/tsv2bam/{sample}.log"
+        "results/lib2/logs/stacks_denovo/tsv2bam/{sample}.log"
     benchmark:
-        "results/benchmarks/stacks_denovo/tsv2bam/{sample}.bmk"
+        "results/lib2/benchmarks/stacks_denovo/tsv2bam/{sample}.bmk"
     shell:
         " (tsv2bam				"
-        " -P results/stacks_denovo/sstacks/	"
-        " -o results/stacks_denovo/tsv2bam/	"    
-        " -R results/process_radtags/   	"
+        " -P results/lib2/stacks_denovo/sstacks/	"
+        " -o results/lib2/stacks_denovo/tsv2bam/	"    
+        " -R results/lib2/process_radtags/   	"
         " -M {params.popmap} -t 10) 		"
         " 2> {log}				"
