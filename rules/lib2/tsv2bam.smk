@@ -13,7 +13,7 @@ rule tsv2bam:
     resources:
         cpus=10,
         mem_mb=78000,
-        time="24:00:00"
+        time="3-00:00:00"
     log:
         "results/lib2/logs/stacks_denovo/tsv2bam/{sample}.log"
     benchmark:
@@ -22,6 +22,6 @@ rule tsv2bam:
         " (tsv2bam				"
         " -P results/lib2/stacks_denovo/sstacks/	"
         " -o results/lib2/stacks_denovo/tsv2bam/	"    
-        " -R results/lib2/process_radtags/   	"
-        " -M {params.popmap} -t 10) 		"
+        " -R results/lib2/process_radtags/      "
+        " -M {params.popmap} -t 10)             "
         " 2> {log}				"
