@@ -1,17 +1,17 @@
 configfile: "rapr-ddrad-smk-ovis/config/config_lib2.yaml"
 
-include: "rules/lib2/common.smk"
+include: "../rules/lib2/common.smk"
 
-include: "rules/lib2/clone_filter.smk"
+include: "../rules/lib2/clone_filter.smk"
 
-include: "rules/lib2/process_radtags.smk"
-include: "rules/lib2/rename_fastqs.smk"
+include: "../rules/lib2/process_radtags.smk"
+include: "../rules/lib2/rename_fastqs.smk"
 
 # Stacks de novo pipeline
-include: "rules/lib2/ustacks.smk"
-include: "rules/lib2/cstacks.smk"
-include: "rules/lib2/sstacks.smk"
-include: "rules/lib2/tsv2bam.smk"
-include: "rules/lib2/gstacks.smk"
+include: "../rules/lib2/ustacks.smk"
+include: "../rules/lib2/cstacks.smk"
+include: "../rules/lib2/sstacks.smk"
+include: "../rules/lib2/tsv2bam.smk"
+include: "../rules/lib2/gstacks.smk"
 
-include: "rules/lib2/populations.smk"
+include: "../rules/lib2/populations.smk"
