@@ -1,0 +1,8 @@
+
+sample_info: "rapr-ddrad-smk-ovis/data/sample_info_lib1.tsv"
+
+popmap: "rapr-ddrad-smk-ovis/data/popmap_lib1.tsv"
+
+process_radtags:
+    enzyme1: ecoRI
+    enzyme2: nspI
